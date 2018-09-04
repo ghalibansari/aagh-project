@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<section class="jumbotron text-center">
+    <div class="container">
+        <h2 class="jumbotron-heading">WELCOME TO A2GH COMPUTERS AND HARDWARES</h2>
+        <p class="lead text-muted">We sell all kind of Computers, Laptops, Hardware and Accessories</p>
+        <a href="mailto:a2gh@gmail.com" class="btn btn-primary my-2">E-Mail Us</a>
+    </div>
+</section>
+
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            {% for product in products.all %}
+            <div class="col-md-4" onclick="window.location='{% url 'detail' product.id %}';" style="cursor: pointer;">
+                <div class="card mb-4 shadow-sm">
+                    <h4 class="text-center pt-2">{{ product.title }}</h4>
+                    <hr />
+                    <img class="card-img-top" src="{{ product.image.url }}" height="220">
+                    <div class="card-body">
+                        <p class="card-text">{{ product.summary }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Buy</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary">{{ product.category }}</button>
+                            </div>
+                            <small class="text-muted">Rs : {{ product.price }}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
