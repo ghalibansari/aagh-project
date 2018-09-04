@@ -29,4 +29,4 @@ class Product(models.Model):
         return self.title
 
     def summary(self):
-        return self.description[:100]
+        return self.description[:110]
